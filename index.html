@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background-image: url("images/bg.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;  
+        color: white;
+      }
+      header {
+        background-color: rgba(51, 51, 51, 0.8);
+        color: white;
+        padding: 10px;
+        font-size: 24px;
+      }
+      .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 10px;
+        background-color: rgba(66, 66, 66, 0.6);
+        border-radius: 10px;
+        gap: 10px;
+      }
+      .section {
+        padding: 10px;
+        margin: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        color: rgb(48, 46, 46);
+      }
+
+      /* html {
+      scroll-behavior: smooth;
+      } */
+      .profile-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .profile-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        /* margin-bottom: 15px; */
+        border: 3px solid white;
+      }
+
+      h2 {
+        color: rgb(29, 29, 29);
+        text-shadow: 2px 2px 5px rgb(243, 243, 243);
+        
+      }
+
+      .buttons a {
+        display: inline-block;
+        padding: 10px;
+        margin: 5px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        color: rgb(100, 99, 99);
+        border: 2px solid white;
+        background: none;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      }
+      .buttons a:hover {
+        background-color: white;
+        color: black;
+      }
+
+      .social-buttons a {
+        display: inline-block;
+        padding: 10px;
+        margin: 5px;
+        text-decoration: none;
+        border-radius: 35px;
+        font-size: 15px;
+        color: rgb(100, 99, 99);
+        border: 2px solid rgb(100, 99, 99);
+        background: none;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+      }
+      .social-buttons a:hover{
+        background-color: rgb(100, 99, 99);
+        color: white;
+        border: 2px solid white;
+      }
+      .social-buttons a img {
+        width: 30px;
+        height: 30px;
+
+      }
+      .skills-container {
+        display: flex;
+        
+        flex-direction: column;
+      
+
+      }
+      .skill {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 50px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        color: black;
+        gap: 10px;
+     
+      }
+
+      .skill-image {
+        flex: 1;
+        flex-wrap: inherit;
+        min-width: 300px;
+        min-height: 350px;  
+        max-width: 100%;
+      }
+      .skill-content {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        /* flex-grow: 1; */
+        flex-direction: column;
+      }
+      
+      .skill-content iframe {
+        flex: 1;
+        flex-wrap: inherit;
+        min-width: 300px;
+        min-height: 350px;       
+        
+      }
+    
+      .skill-description {
+        flex: 1;
+        padding: 10px;
+      }
+
+      .bullet-position{
+        text-align: left;
+      }
+      
+      .testimonial-image {
+        flex: 1;
+        flex-wrap: nowrap;
+        min-width: 300px; 
+        max-width: 100%;
+        height: auto;
+        transition: transform 0.3s ease-in-out;
+        border: 5px solid gray;
+      }
+
+      .testimonial-image:hover{
+        transform: scale(1.2);
+        border: 5px solid gray; 
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+      }
+      .section-tools {
+        display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            max-width: 80px;
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+        }
+        .logo:hover {
+            transform: scale(1.2);
+        }
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .logo-container span {
+            position: absolute;
+            bottom: -20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px;
+            font-size: 12px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .logo-container:hover span {
+            opacity: 1;
+        }
+
+
+
+      @media (max-width: 768px) {
+        .container {
+          max-width: 100%;
+          padding: 10px;
+        }
+        .section {
+          padding: 15px;
+        }
+        .buttons a {
+          padding: 8px 15px;
+          font-size: 14px;
+        }
+        .skill-content, .skill-content2 {
+          flex-direction: column;
+        }
+      }
+      @media (min-width: 1024px) {
+        .container {
+           max-width: 800px;
+        }
+       .section {
+          padding: 30px;
+       }
+       .buttons a {
+         padding: 12px 25px;
+         font-size: 18px;
+       }
+       #introduction {
+        display: flex;
+        align-items: center;
+        text-align: left;
+       }
+       .intro-text {
+         flex: 2;
+       }
+       .profile-container {
+         flex: 1;
+         display: flex;
+         justify-content: center;
+       }
+       .buttons {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+        }
+      }  
+    </style>
+  </head>
+  <body>
+    
+    
+    <header>Welcome to my Portfolio</header>
+    <div class="container profile-container">
+      <div id="introduction" class="section">        
+            <img src="images/profile-picture.jpg" alt="Profile Image" class="profile-image" />
+            <div class="intro-text">   
+            <h2 style="text-align: center;">Hello, I am Jeffrey</h2>
+            <h4 style="text-align: center;"><i>A freelance E-Commerce Specialist | Virtual Assistant</i></h4>
+            
+            <div class="social-buttons">
+              <a href="mailto:jeffreybautista1209@gmail.com">Hire Me!</a>
+            </div>
+        
+            <!-- <div class="social-buttons">
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="logo/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://www.linkedin.com" target="_blank">
+                    <img src="logo/linkedin.png" alt="LinkedIn">
+                </a>
+            </div> -->
+        </div>
+        <!-- <div class="profile-container">
+            <img src="images/profile-picture.jpg" alt="Profile Image" class="profile-image">
+        </div> -->
+        <div class="buttons">
+            <a href="#skills">Services</a>
+            <a href="#work">Work Experience</a>
+            <a href="#education">Education Background</a>
+            <a href="#testimonials">Testimonials</a>
+        </div>
+    </div>
+
+      <!-- <img src="profile.jpg" alt="Profile Image" class="profile-image" />
+      <p>Welcome to my portfolio. Connect with me:</p>
+      <div class="social-buttons">
+        <a href="#"><img src="logo/facebook.png" alt="Facebook" /></a>
+        <a href="#"><img src="logo/linkedin.png" alt="LinkedIn" /></a>
+      </div>
+      <div class="buttons">
+        <a href="#skills">Skills</a>
+        <a href="#work">Work Experience</a>
+        <a href="#education">Education Background</a>
+        <a href="#testimonial">Testimonials</a>
+      </div>
+    </div> -->
+    <div id="skills"class="container">
+      <h1>Services</h1>
+      <div class="section">
+        <!-- <div class="skill1"> -->
+          <h2><U>Amazon FBA Specialist</U></h2>
+          <div class="skill-content">
+            <img src="images/amazon-pic.jpg" class="skill-image"/>
+            <div class="skill-description">
+              <p> Specializing in listing health, revenue operations, and PPC management, I ensure Amazon accounts remain competitive, compliant, and profitable.</p>
+              <div class="bullet-position">
+                <li><strong>Listing Health & Optimization</strong> - Resolve search suppression, missing offers, and pricing errors. 
+                  Optimize listings with high-quality images and strategic keywords.</li>
+                  <li><strong>Revenue & Buy Box Strategy</strong> - Troubleshoot Buy Box issues, analyze margins, and streamline inventory management to maximize profitability.</li> 
+                  <li><strong>Account Health & Compliance</strong> - Monitor key metrics, resolve policy violations, and maintain a strong seller rating.</li> 
+                  <li><strong>PPC Management</strong> - Optimize bids, analyze campaign performance, and improve ad ROI.</li> 
+                  <li><strong>Others</strong> - Create accurate product listings, conduct market analysis, and generate actionable reports.</li>
+              </div>        
+            </div>
+          </div>
+<hr>
+          <h2><U>Photo and Video Editing</U></h2>
+          <div class="skill-content">
+            <iframe src="https://www.youtube.com/embed/wxP2HjREJ8E" title="YouTube video player" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen width="100%" height="400px"></iframe>
+            <div class="skill-description">
+              <p>I have a basic understanding of <b>Adobe Photoshop</b> and <b>Premiere Pro</b>, allowing me to enhance images and edit videos effectively.
+                 To strengthen my photo editing skills, I completed the Photoshop Master Course on <a href="https://www.udemy.com/" target="_blank"
+                 style="color: rgb(212, 49, 28);">Udemy</a>, where I learned essential techniques for image manipulation, retouching, and composition.
+                 I am continuously exploring new ways to improve my editing proficiency for creative and professional projects.</p>
+              <p>With this skill, I can help you to create advertisement and creative campaign for your products.</p>     
+            </div>
+          </div>
+<hr>  
+          <h2><U>Web Development</U></h2>
+          <div class="skill-content">
+            <iframe src="video/web-dev.mp4" allow="autoplay" width="100%" height="100%"> </iframe>
+            <div class="skill-description">
+              <p>
+                I have a foundational background in web development, leveraging my Computer Science degree to build functional and visually appealing websites.
+                 While my expertise is at a basic to intermediate level, I take pride in manually coding my portfolio website, showcasing my ability to structure, style, 
+                 and optimize web pages from the ground up. This hands-on approach has strengthened my understanding of <b>HTML</b>, <B>CSS</B>, and <B>JavaScript</B>,
+                 allowing me to refine my skills in front-end development.  I'm continuously learning and exploring new techniques to enhance my web development capabilities.
+              </p>    
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div id="work" class="container">
+      <h1>Work Experience</h1>
+      <div class="section">    
+        <h2><strong><u>E-commerce Specialist | Amazon VA</u></strong></h2>
+          <p><b>Listing Health Management</b></p> 
+          <div class="bullet-position">
+            <li>Monitored and resolved issues such as search suppression, missing offers, broken variations,
+              and pricing errors, ensuring listings remained active and compliant.</li>   
+            <li>Troubleshot stranded inventory and variation family setup, reducing listing downtime.</li>
+          </div>
+            
+          
+         <p><b>Listing Optimization and Management</b></p>
+         <div class="bullet-position">
+          <li>Uploaded high-quality images and optimized listings with strategic keyword integration,
+            improving search visibility and click-through rates.</li>
+        <li>Conducted comprehensive listing audits and executed FBA removal orders to streamline
+            inventory processes.</li>
+         </div>
+
+          
+          <p><b>Revenue Operations</b></p>
+          <div class="bullet-position">
+            <li>Diagnosed and resolved buy box issues, leveraging pricing strategies to maintain
+              competitiveness and boost sales.</li>
+        <li>Reviewed product performance, margins, and storage utilization, identifying cost-saving
+              opportunities.</li>
+        <li>Logged and tracked cases for efficient issue resolution, enhancing overall account performance.</li>
+          </div>
+            
+          
+          <p><b>Account Health and Compliance</b></p>   
+          <div class="bullet-position">
+            <li>Monitored account health metrics, including VOC, compliance violations, and performance
+              notifications, ensuring adherence to Amazon policies.</li>
+            <li>Successfully removed negative feedback to maintain a strong seller rating.</li>
+          </div>     
+            
+          
+          <p><b>PPC Campaign Management</b></p>
+          <div class="bullet-position">
+            <li>Optimized bids and analyzed campaign performance, improving ad ROI.</li>
+            <li>Generated detailed output reports to guide strategic decision-making.</li>
+          </div>
+          
+          <p><b>Additional Contributions:</b></p>
+          <div class="bullet-position">
+            <li>Created new product listings using Akeneo, ensuring accurate and enriched product
+              information.</li>
+            <li>Conducted market analysis through window shopping, identifying trends and competitive
+              opportunities.</li>
+            <li>Produced reports that provided actionable insights to stakeholders.</li>
+          </div>
+            
+      </div>
+    </div> 
+
+    <div id="education" class="container">
+      <h1>Education and Specialized Trainings</h1>
+      <div class="section">
+      <h3><b>Bachelor of Science in Computer Science</b></h3> 
+      <p>I hold a degree in Computer Science, which has provided me with a solid foundation in both theoretical and practical aspects of technology. 
+        Through my studies, I gained a deep understanding of programming, web development, and software engineering, and developed critical problem-solving skills. 
+        Additionally, I continuously enhance my knowledge through various online courses and certifications in areas such as
+         E-Commerce and Digital Marketing, ensuring I stay updated with the latest trends in the industry.</p>
+      <hr>
+      <h3><b>Photoshop Master Course</b></h3>
+      <p>To enhance my creative capabilities, I completed the <b>Photoshop Master Course: From Beginner to Photoshop Pro</b> on <a href="https://www.udemy.com/" target="_blank"
+        style="color: rgb(212, 49, 28); text-decoration: none;">Udemy</a>, where I gained hands-on experience in advanced image manipulation,
+         retouching, and graphic design. The course covered essential tools and techniques like layers, masking, and color correction, which have strengthened my
+          ability to create polished and professional visuals. I apply these skills in projects such as photo editing and promotional content creation.
+      </p>
+      <p><a href="https://udemy-certificate.s3.amazonaws.com/pdf/UC-6a0cb104-e61e-468a-98c1-e9ea57ca9fa2.pdf" target="_blank" 
+        style="color: rgb(212, 49, 28); text-decoration: none;">🎗️🎗️🎗️<b> VIEW CERTIFICATION </b>🎗️🎗️🎗️</a></p>
+        <hr>
+      <h3><b>Web Development</b></h3>
+      (QuickPro Online Professional Academy)
+      <p>I took the Web Development course at QuickPro Online Professional Academy to refresh and expand my knowledge of HTML, CSS, and JavaScript. 
+        This course helped me reinforce the foundational skills I had previously acquired while also introducing new techniques and best practices in responsive web design 
+        and front-end development. It allowed me to stay up-to-date with modern web technologies and improve my ability to create functional, visually appealing, and mobile-friendly websites.
+      </p>
+      <hr>
+      <h3><b>Bookkeeping</b></h3>
+      (QuickPro Online Professional Academy)
+      <p>As part of my business skills development, I took the Bookkeeping course at QuickPro Online Professional Academy. 
+        This course covered essential accounting principles, financial statement preparation, general ledger management, and the basics of tax regulations. 
+        It has equipped me with the tools to efficiently track financial transactions, maintain accurate records, and support businesses with their day-to-day financial operations.
+         I am now confident in using <b>QuickBooks</b> and similar software for bookkeeping tasks.
+      </p>
+      </div>
+    </div>
+
+    <div id="sofware" class="container">
+      <h1>Software & Tools Proficiency</h1>
+      <div class="section-tools" id="logo-container">
+        <!-- <img src="tools/sellercentral.png" alt="Seller Central" class="logo seller-central" data-name="Seller Central"> -->
+        </div>
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+              const logos = [
+                  { src: "tools/amz-central.jpg", name: "Seller/Vendor Central"},
+                  { src: "tools/sellerboard.jpg", name: "Seller Board" },
+                  { src: "tools/Akeneo.png", name: "Akeneo" },
+                  { src: "tools/asana.jpg", name: "Asana" },
+                  { src: "tools/datadive.png", name: "Data Dive" },
+                  { src: "tools/helium10.png", name: "Helium 10" },
+                  { src: "tools/keepa.png", name: "Keepa" },
+                  { src: "tools/pbi.png", name: "Power BI" },
+                  { src: "tools/netsuite.png", name: "NetSuite" },
+                  { src: "tools/premiere-pro.png", name: "Premiere Pro" },
+                  { src: "tools/photoshop.png", name: "Photoshop" },
+                  { src: "tools/ms-excel.png", name: "MS Excel" },
+                  { src: "tools/ms-word.png", name: "MS Word" },
+                  { src: "tools/ms-pp.png", name: "MS PowerPoint" },
+                  { src: "tools/ms-outlook.png", name: "MS Outlook" },
+                  { src: "tools/ms-teams.png", name: "MS Teams" }
+              ];
+  
+              const container = document.getElementById("logo-container");
+            
+            logos.forEach(logo => {
+                let div = document.createElement("div");
+                div.classList.add("logo-container");
+
+                let img = document.createElement("img");
+                img.src = logo.src;
+                img.alt = logo.name;
+                img.classList.add("logo");
+                
+                let span = document.createElement("span");
+                span.textContent = logo.name;
+                
+                div.appendChild(img);
+                div.appendChild(span);
+                container.appendChild(div);
+            });
+        });
+      </script>
+      </div>
+    
+    
+    <div id="testimonials" class="container">
+      <h1>Testimonials</h1>
+      <div class="section">
+        <img src="images/testimonial-1.jpg" class="testimonial-image"/>
+        <img src="images/testimonial-4.jpg" class="testimonial-image"/>
+        <img src="images/testimonial-3.jpg" class="testimonial-image"/>
+        <img src="images/testimonial-2.jpg" class="testimonial-image"/>
+      </div>
+    </div>
+    <script>
+      // Select all links with href that starts with #
+      const links = document.querySelectorAll('a[href^="#"]');
+      
+      // Add event listener for each link
+      links.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault(); // Prevent the default anchor behavior (jumping)
+          
+          const targetId = this.getAttribute('href').substring(1); // Get the ID of the target
+          const targetElement = document.getElementById(targetId);
+    
+          if (targetElement) {
+            // Scroll smoothly to the target element
+            window.scrollTo({
+              top: targetElement.offsetTop - 50, // Offset by 50px to account for any fixed headers
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
